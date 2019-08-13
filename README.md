@@ -7,6 +7,7 @@
 ### Develop testing regiment<br>
 08/13/2019: Began determining set of parameters and configurations to test for paper<br>
 <br>
-### Begin write-up<br>
-<br>
 ### Theory research<br>
+08/13/2019: Reading relevant works and conducting literature review<br>
+<br>
+### Begin write-up<br>
