@@ -1,7 +1,7 @@
 # IterNet
 
 ## To Do:
-Implement custom layer
-Develop testing regiment
-Begin write-up
-> Theory research
+Implement custom layer<br>
+Develop testing regiment<br>
+Begin write-up<br>
+Theory research
