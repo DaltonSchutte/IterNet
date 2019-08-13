@@ -12,6 +12,10 @@ def weights_init(model):
             nn.init.kaiming_normal_(m.weight)
             if m.bias is not None:
                 nn.init.constant_(m.bias, 0)
+        elif isinstance(m, networks.Iterative):
+            nn.init.kaiming_normal_(m.weight)
+            if m.bias is not None:
+                nn.init.constant_(m.bias, 0)
         elif isinstance(m, nn.Linear):
             nn.init.kaiming_normal_(m.weight)
             if m.bias is not None:
@@ -70,7 +74,7 @@ def test_model(loaders, model, criterion, device):
     return correct / total
 
 
-def trial_evaluation(n_trials, epochs, loaders, model_name, device, iter_depth=2, verbose=False):
+def trial_evaluation(n_trials, epochs, loaders, model_name, device, linear=False, n_iter=2, verbose=False):
     assert model_name in ['LeNet', 'IterNet'], ValueError('Invalid model type')
 
     print("Testing {} instances of {} model for {} epochs per trial...".format(n_trials,
@@ -87,7 +91,7 @@ def trial_evaluation(n_trials, epochs, loaders, model_name, device, iter_depth=2
         if model_name == 'LeNet':
             model = networks.LeNet()
         elif model_name == 'IterNet':
-            model = networks.IterNet(iter_depth=iter_depth)
+            model = networks.IterNet(linear=linear, n_iter= n_iter)
     
         #Initialize weights with kaiming_normal
         weights_init(model)
@@ -128,7 +132,7 @@ def trial_evaluation(n_trials, epochs, loaders, model_name, device, iter_depth=2
 def summarize_trials(accuracies):
     accuracies = np.array(accuracies)
 
-    print("Max: ", np.max(accuracies))
-    print("Min: ", np.min(accuracies))
-    print("Mean: ", np.mean(accuracies))
-    print("SDev: ", np.std(accuracies))
+    print("Max: {:.2%}".format(np.max(accuracies)))
+    print("Min: {:.2%}".format(np.min(accuracies)))
+    print("Mean: {:.2%}".format(np.mean(accuracies)))
+    print("SDev: {:.2%}".format(np.std(accuracies)))
