@@ -1,4 +1,5 @@
 # IterNet
+Working through the theory suggested that the techniques were not fundamentally different from a standard linear layer. Will revist if other ideas occur, but for now seems to be a dead end.
 
 ## To Do:
 ### Implement custom layer<br>
